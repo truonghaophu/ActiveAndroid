@@ -28,8 +28,8 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteOpenHelper;
 import android.text.TextUtils;
 
 import com.activeandroid.util.IOUtils;
@@ -64,11 +64,6 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 	//////////////////////////////////////////////////////////////////////////////////////
 	// OVERRIDEN METHODS
 	//////////////////////////////////////////////////////////////////////////////////////
-
-	@Override
-	public void onOpen(SQLiteDatabase db) {
-		executePragmas(db);
-	};
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
