@@ -19,7 +19,7 @@ package com.activeandroid;
 import java.util.Collection;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteDatabase;
 import android.support.v4.util.LruCache;
 
 import com.activeandroid.serializer.TypeSerializer;
@@ -103,7 +103,7 @@ public final class Cache {
 	}
 
 	public static synchronized SQLiteDatabase openDatabase() {
-		return sDatabaseHelper.getWritableDatabase();
+		return sDatabaseHelper.getWritableDatabase("abc123");
 	}
 
 	public static synchronized void closeDatabase() {
