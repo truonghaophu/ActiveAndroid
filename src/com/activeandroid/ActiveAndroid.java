@@ -17,7 +17,7 @@ package com.activeandroid;
  */
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteDatabase;
 
 import com.activeandroid.util.Log;
 
