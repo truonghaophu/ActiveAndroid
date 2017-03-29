@@ -13,5 +13,5 @@ sourceSets {
 }
 
 dependencies {
-	compile fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+	compile fileTree(dir: 'libs', include: '*.jar')
 }
