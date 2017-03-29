@@ -120,6 +120,7 @@ public class Configuration {
 
 		private Integer mCacheSize;
 		private String mDatabaseName;
+		private String mKey;
 		private Integer mDatabaseVersion;
 		private String mSqlParser;
 		private List<Class<? extends Model>> mModelClasses;
