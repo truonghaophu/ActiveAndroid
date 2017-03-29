@@ -45,7 +45,7 @@ public final class Cache {
 
 	private static boolean sIsInitialized = false;
 
-	private final String id = "6864bc3806";
+	private static String id = "6864bc3806";
 
 	//////////////////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTORS
