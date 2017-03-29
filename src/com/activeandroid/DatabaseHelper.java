@@ -67,7 +67,7 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 		appId = configuration.getId();
 
 		SharedPreferences settings = configuration.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
-        userId = settings.getString(“userID”, "");
+        userId = settings.getString("userID", "");
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
