@@ -37,6 +37,7 @@ public class Configuration {
 
 	private Context mContext;
 	private String mDatabaseName;
+	private String mKey;
 	private int mDatabaseVersion;
 	private String mSqlParser;
 	private List<Class<? extends Model>> mModelClasses;
@@ -61,6 +62,10 @@ public class Configuration {
 
 	public String getDatabaseName() {
 		return mDatabaseName;
+	}
+
+	public String getKey() {
+		return mKey;
 	}
 
 	public int getDatabaseVersion() {
@@ -99,6 +104,7 @@ public class Configuration {
 		private static final String AA_DB_NAME = "AA_DB_NAME";
 		private static final String AA_DB_VERSION = "AA_DB_VERSION";
 		private final static String AA_MODELS = "AA_MODELS";
+		private final static String AA_KEY = "AA_KEY";
 		private final static String AA_SERIALIZERS = "AA_SERIALIZERS";
 		private final static String AA_SQL_PARSER = "AA_SQL_PARSER";
 
@@ -209,6 +215,13 @@ public class Configuration {
 				configuration.mDatabaseName = getMetaDataDatabaseNameOrDefault();
 			}
 
+			// Get database key from meta-data
+			if (mKey != null) {
+				configuration.mKey = mKey;
+			} else {
+				configuration.mKey = getMetaDataDatabaseKeyOrDefault();
+			}
+
 			// Get database version from meta-data
 			if (mDatabaseVersion != null) {
 				configuration.mDatabaseVersion = mDatabaseVersion;
@@ -259,6 +272,15 @@ public class Configuration {
 			}
 
 			return aaName;
+		}
+
+		private String getMetaDataDatabaseKeyOrDefault() {
+			String aaKey = ReflectionUtils.getMetaData(mContext, AA_KEY);
+			if (aaKey == null) {
+				aaKey = "";
+			}
+
+			return aaKey;
 		}
 
 		private int getMetaDataDatabaseVersionOrDefault() {

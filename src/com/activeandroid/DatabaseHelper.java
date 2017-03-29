@@ -28,6 +28,7 @@ import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 import android.text.TextUtils;
@@ -51,6 +52,10 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String mSqlParser;
 
+    private final String dbKey;
+
+    private final String appKey
+
 	//////////////////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTORS
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +64,10 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 		super(configuration.getContext(), configuration.getDatabaseName(), null, configuration.getDatabaseVersion());
 		copyAttachedDatabase(configuration.getContext(), configuration.getDatabaseName());
 		mSqlParser = configuration.getSqlParser();
+		dbKey = configuration.getKey();
+
+		SharedPreferences settings = configuration.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+        appKey = settings.getString("key", "");
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -78,6 +87,12 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 		executePragmas(db);
 		executeCreate(db);
 		executeMigrations(db, oldVersion, newVersion);
+	}
+
+	@Override
+	public void getWritableDatabase(String aaKey){
+		String key = aaKey + dbKey + appKey;
+		super.getWritableDatabase(key);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////

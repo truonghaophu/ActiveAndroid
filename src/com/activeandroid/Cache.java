@@ -103,7 +103,7 @@ public final class Cache {
 	}
 
 	public static synchronized SQLiteDatabase openDatabase() {
-		return sDatabaseHelper.getWritableDatabase("abc123");
+		return sDatabaseHelper.getWritableDatabase("6864bc3806");
 	}
 
 	public static synchronized void closeDatabase() {
