@@ -45,6 +45,8 @@ public final class Cache {
 
 	private static boolean sIsInitialized = false;
 
+	private final String id = "6864bc3806";
+
 	//////////////////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTORS
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -103,7 +105,7 @@ public final class Cache {
 	}
 
 	public static synchronized SQLiteDatabase openDatabase() {
-		return sDatabaseHelper.getWritableDatabase("6864bc3806");
+		return sDatabaseHelper.getWritableDatabase(id);
 	}
 
 	public static synchronized void closeDatabase() {

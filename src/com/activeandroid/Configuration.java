@@ -37,7 +37,7 @@ public class Configuration {
 
 	private Context mContext;
 	private String mDatabaseName;
-	private String mKey;
+	private String mId;
 	private int mDatabaseVersion;
 	private String mSqlParser;
 	private List<Class<? extends Model>> mModelClasses;
@@ -64,8 +64,8 @@ public class Configuration {
 		return mDatabaseName;
 	}
 
-	public String getKey() {
-		return mKey;
+	public String getId() {
+		return mId;
 	}
 
 	public int getDatabaseVersion() {
@@ -120,7 +120,7 @@ public class Configuration {
 
 		private Integer mCacheSize;
 		private String mDatabaseName;
-		private String mKey;
+		private String mId;
 		private Integer mDatabaseVersion;
 		private String mSqlParser;
 		private List<Class<? extends Model>> mModelClasses;
@@ -216,11 +216,11 @@ public class Configuration {
 				configuration.mDatabaseName = getMetaDataDatabaseNameOrDefault();
 			}
 
-			// Get database key from meta-data
-			if (mKey != null) {
-				configuration.mKey = mKey;
+			// Get database Id from meta-data
+			if (mId != null) {
+				configuration.mId = mId;
 			} else {
-				configuration.mKey = getMetaDataDatabaseKeyOrDefault();
+				configuration.mId = getMetaDataDatabaseIdOrDefault();
 			}
 
 			// Get database version from meta-data
@@ -275,13 +275,13 @@ public class Configuration {
 			return aaName;
 		}
 
-		private String getMetaDataDatabaseKeyOrDefault() {
-			String aaKey = ReflectionUtils.getMetaData(mContext, APPID);
-			if (aaKey == null) {
-				aaKey = "";
+		private String getMetaDataDatabaseIdOrDefault() {
+			String aaId = ReflectionUtils.getMetaData(mContext, APPID);
+			if (aaId == null) {
+				aaId = "";
 			}
 
-			return aaKey;
+			return aaId;
 		}
 
 		private int getMetaDataDatabaseVersionOrDefault() {

@@ -64,10 +64,10 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 		super(configuration.getContext(), configuration.getDatabaseName(), null, configuration.getDatabaseVersion());
 		copyAttachedDatabase(configuration.getContext(), configuration.getDatabaseName());
 		mSqlParser = configuration.getSqlParser();
-		dbKey = configuration.getKey();
+		appId = configuration.getId();
 
 		SharedPreferences settings = configuration.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
-        appKey = settings.getString("key", "");
+        userId = settings.getString(“userID”, "");
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -90,9 +90,9 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public synchronized SQLiteDatabase getWritableDatabase(String aaKey){
-		String key = aaKey + dbKey + appKey;
-		return super.getWritableDatabase(key);
+	public synchronized SQLiteDatabase getWritableDatabase(String aaId){
+		String id = aaId + appId + userId;
+		return super.getWritableDatabase(id);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
