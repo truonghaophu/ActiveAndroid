@@ -54,7 +54,7 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String dbKey;
 
-    private final String appKey
+    private final String appKey;
 
 	//////////////////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTORS
