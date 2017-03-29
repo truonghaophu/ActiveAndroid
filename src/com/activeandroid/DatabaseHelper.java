@@ -90,7 +90,7 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public void getWritableDatabase(String aaKey){
+	public synchronized SQLiteDatabase getWritableDatabase(String aaKey){
 		String key = aaKey + dbKey + appKey;
 		super.getWritableDatabase(key);
 	}
