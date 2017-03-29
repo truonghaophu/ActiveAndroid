@@ -52,9 +52,9 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
 
     private final String mSqlParser;
 
-    private final String dbKey;
+    private final String appId;
 
-    private final String appKey;
+    private final String userId;
 
 	//////////////////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTORS
